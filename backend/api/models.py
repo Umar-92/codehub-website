@@ -64,6 +64,8 @@ def blog_image_upload_path(instance, filename):
     return f'blog_images/{instance.blog.id}/{filename}'
 
 
+def event_image_upload_path(instance, filename):
+    return f'events/{instance.id}/{filename}'
 
 
 class Blog(models.Model):
@@ -119,8 +121,6 @@ class Event(models.Model):
     content = models.TextField()
     date = models.DateField(default=date.today)
 
-def event_image_upload_path(instance, filename):
-    return f'events/{instance.event.id}/{filename}'
 
 class EventImage(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='images')
